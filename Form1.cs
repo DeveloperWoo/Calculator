@@ -20,68 +20,6 @@ namespace MyCalculator
             InitializeComponent();
         }
 
-        public void Disable()
-        {
-            buttonON.Show();
-            buttonOFF.Hide();
-            
-            textBox1.Enabled = false;
-            button0.Enabled = false;
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button5.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            button8.Enabled = false;
-            button9.Enabled = false;
-            buttonDot.Enabled = false;
-            buttonMultiply.Enabled = false;
-            buttonDivide.Enabled = false;
-            buttonAdd.Enabled = false;
-            buttonSubtract.Enabled = false;
-            buttonEqual.Enabled = false;
-            buttonClear.Enabled = false;
-            buttonBack.Enabled = false; 
-    }
-
-        public void Enable()
-        {
-            buttonON.Hide();
-            buttonOFF.Show();
-
-            textBox1.Enabled = true;
-            button0.Enabled = true;
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
-            button8.Enabled = true;
-            button9.Enabled = true;
-            buttonDot.Enabled = true;
-            buttonMultiply.Enabled = true;
-            buttonDivide.Enabled = true;
-            buttonAdd.Enabled = true;
-            buttonSubtract.Enabled = true;
-            buttonEqual.Enabled = true;
-            buttonClear.Enabled = true;
-            buttonBack.Enabled = true;
-        }
-
-        //Display the passed string in the text box with Blue colour
-        static void addTextColor(TextBox textBox, string str, Color colour)
-        {
-            if (!textBox.Text.Contains(".") || str != ".")
-            {
-                textBox.Text = textBox.Text + str;
-                textBox.ForeColor = colour;
-            }   
-        }
-
         private void button0_Click(object sender, EventArgs e)
         {
             addTextColor(textBox1, "0", Color.Blue);
@@ -137,11 +75,6 @@ namespace MyCalculator
             addTextColor(textBox1, ".", Color.Blue);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             operatorClick(1, "+");
@@ -192,38 +125,100 @@ namespace MyCalculator
             }
         }
 
-        public void compute()
-        {
-            switch (operatorNum)
-            {
-                case 1: //Add
-                    ans = num + float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-                case 2: //Subtract
-                    ans = num - float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-                case 3: //Multiply
-                    ans = num * float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-                case 4: //Divide
-                    ans = num / float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-                default:
-                    break;
-            }
-        }
-
         public void operatorClick(int operatorNumber, string operatorSymbol)
         {
             num = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
             operatorNum = operatorNumber;
-            label1.Text = num.ToString() + operatorSymbol; // Display text
+            label1.Text += num.ToString() + operatorSymbol; // Display text
+        }
+
+        public void compute()
+        {
+            switch (operatorNum)
+            {
+            case 1: //Add
+                ans = num + float.Parse(textBox1.Text);
+                textBox1.Text = ans.ToString();
+                break;
+            case 2: //Subtract
+                ans = num - float.Parse(textBox1.Text);
+                textBox1.Text = ans.ToString();
+                break;
+            case 3: //Multiply
+                ans = num * float.Parse(textBox1.Text);
+                textBox1.Text = ans.ToString();
+                break;
+            case 4: //Divide
+                ans = num / float.Parse(textBox1.Text);
+                textBox1.Text = ans.ToString();
+                break;
+            default:
+                break;
+        }
+        }
+
+        public void Disable()
+        {
+            buttonON.Show();
+            buttonOFF.Hide();
+
+            textBox1.Enabled = false;
+            button0.Enabled = false;
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+            button9.Enabled = false;
+            buttonDot.Enabled = false;
+            buttonMultiply.Enabled = false;
+            buttonDivide.Enabled = false;
+            buttonAdd.Enabled = false;
+            buttonSubtract.Enabled = false;
+            buttonEqual.Enabled = false;
+            buttonClear.Enabled = false;
+            buttonBack.Enabled = false;
+        }
+
+        public void Enable()
+        {
+            buttonON.Hide();
+            buttonOFF.Show();
+
+            textBox1.Enabled = true;
+            button0.Enabled = true;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
+            button7.Enabled = true;
+            button8.Enabled = true;
+            button9.Enabled = true;
+            buttonDot.Enabled = true;
+            buttonMultiply.Enabled = true;
+            buttonDivide.Enabled = true;
+            buttonAdd.Enabled = true;
+            buttonSubtract.Enabled = true;
+            buttonEqual.Enabled = true;
+            buttonClear.Enabled = true;
+            buttonBack.Enabled = true;
+        }
+
+        //Display the passed string in the text box with Blue colour
+        static void addTextColor(TextBox textBox, string str, Color colour)
+        {
+            if (!textBox.Text.Contains(".") || str != ".")
+            {
+                textBox.Text = textBox.Text + str;
+                textBox.ForeColor = colour;
+            }
         }
     }
 }
