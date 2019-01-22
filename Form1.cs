@@ -214,6 +214,7 @@ namespace MyCalculator
         //Display the passed string in the text box with Blue colour
         static void addTextColor(TextBox textBox, string str, Color colour)
         {
+            //Make sure that we don't put decimal point more than one time
             if (!textBox.Text.Contains(".") || str != ".")
             {
                 textBox.Text = textBox.Text + str;
